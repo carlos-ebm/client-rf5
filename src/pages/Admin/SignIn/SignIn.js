@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Helmet } from "react-helmet";
 import { Layout, Tabs, Space, Card } from "antd";
 import { Redirect } from "react-router-dom";
 import Logo from "../../../assets/img/png/logo.png";
@@ -17,6 +17,8 @@ export default function SignIn() {
   }
 
   return (
+    <>
+    <Helmet><title>Radio F5 | Login</title></Helmet>
     <Layout className="sign-in">
       <Content className="sign-in__content">
         <div className="sign-in__content-logo">
@@ -27,5 +29,6 @@ export default function SignIn() {
         </Card>
       </Content>
     </Layout>
+    </>
   );
 }

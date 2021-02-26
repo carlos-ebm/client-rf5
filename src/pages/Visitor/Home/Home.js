@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import ListMostViewed from "../../../components/Visitor/MostViewed/ListMostViewed";
 import { Row, Col, Card, List } from "antd";
 import PublicationsPreviewHome from "../../../components/Visitor/Publications/PublicationsPreviewHome";
+import { Helmet } from "react-helmet";
 
-import { 
-  getSecondaryPublicationsVisitorApi, 
-  getPrincipalPublicationVisitorApi, 
+import {
+  getSecondaryPublicationsVisitorApi,
+  getPrincipalPublicationVisitorApi,
   getMostViewedPublicationBySectionVisitorApi,
   getPublicationsVisitorApi,
-  setPublicPublicationApi 
+  setPublicPublicationApi,
 } from "../../../api/publication";
 
 import "./Home.scss";
@@ -21,84 +22,93 @@ export default function Home() {
   const [publications, setPublications] = useState([]);
   const [secondaryPublications, setSecondaryPublications] = useState([]);
   const [lastNationalPublication, setLastNationalPublication] = useState([]);
-  const [lastInternationalPublication, setLastInternationalPublication] = useState([]);
+  const [
+    lastInternationalPublication,
+    setLastInternationalPublication,
+  ] = useState([]);
   const [lastSciencePublication, setLastSciencePublication] = useState([]);
   const [lastSportsPublication, setLastSportsPublication] = useState([]);
   const [publicationPrincipal, setPublicationPrincipal] = useState([]);
 
   useEffect(() => {
-    getPublicationsVisitorApi().then((response)=>{
+    getPublicationsVisitorApi().then((response) => {
       setPublications(response.publications);
     });
     getSecondaryPublicationsVisitorApi().then((response) => {
       setSecondaryPublications(response.secondaryPublications);
     });
-    getPrincipalPublicationVisitorApi().then((response)=>{
-      if(response.publication){
+    getPrincipalPublicationVisitorApi().then((response) => {
+      if (response.publication) {
         setPublicationPrincipal(response.publication);
       }
     });
-    getMostViewedPublicationBySectionVisitorApi(1).then((response)=>{
-      if(response){
-      setLastNationalPublication(response);
+    getMostViewedPublicationBySectionVisitorApi(1).then((response) => {
+      if (response) {
+        setLastNationalPublication(response);
       }
     });
-    getMostViewedPublicationBySectionVisitorApi(2).then((response)=>{
-      if(response){
-      setLastInternationalPublication(response);
+    getMostViewedPublicationBySectionVisitorApi(2).then((response) => {
+      if (response) {
+        setLastInternationalPublication(response);
       }
     });
-    getMostViewedPublicationBySectionVisitorApi(3).then((response)=>{
-      if(response){
-      setLastSciencePublication(response);
+    getMostViewedPublicationBySectionVisitorApi(3).then((response) => {
+      if (response) {
+        setLastSciencePublication(response);
       }
     });
-    getMostViewedPublicationBySectionVisitorApi(4).then((response)=>{
-      if(response){
-      setLastSportsPublication(response);
+    getMostViewedPublicationBySectionVisitorApi(4).then((response) => {
+      if (response) {
+        setLastSportsPublication(response);
       }
     });
-  },[]);
+  }, []);
 
   const lastPublications = [];
-  if(lastNationalPublication){
-      lastPublications.push(lastNationalPublication);
+  if (lastNationalPublication) {
+    lastPublications.push(lastNationalPublication);
   }
-  if(lastInternationalPublication){
-     lastPublications.push(lastInternationalPublication);
+  if (lastInternationalPublication) {
+    lastPublications.push(lastInternationalPublication);
   }
-  if(lastSciencePublication){
-     lastPublications.push(lastSciencePublication)
+  if (lastSciencePublication) {
+    lastPublications.push(lastSciencePublication);
   }
-  if(lastSportsPublication){
-      lastPublications.push(lastSportsPublication);
+  if (lastSportsPublication) {
+    lastPublications.push(lastSportsPublication);
   }
 
-
-  useEffect(()=>{
-    var i=0;
-    while (i < publications.length){
-    var dateB = new Date();
-    var dateC = moment(publications[i].publicationDate);
-    var difCB = dateC.diff(dateB)
-    //console.log(difCB);
-      if(difCB <= 0){
-        setPublicPublicationApi(publications[i],publications[i]._id);
+  useEffect(() => {
+    var i = 0;
+    while (i < publications.length) {
+      var dateB = new Date();
+      var dateC = moment(publications[i].publicationDate);
+      var difCB = dateC.diff(dateB);
+      //console.log(difCB);
+      if (difCB <= 0) {
+        setPublicPublicationApi(publications[i], publications[i]._id);
       }
-    i++;
+      i++;
     }
-  })
+  });
 
   return (
-<>
-      <Row className="row">
-        <Col className="row__col-left" span={16}>
-            <PublicationsPreviewHome publicationPrincipal={publicationPrincipal} secondaryPublications={secondaryPublications}/>
+    <>
+      <Helmet><title>Radio F5 | Inicio</title></Helmet>
+      <Row className="row-home">
+        <Col className="row-home__col-left" span={18}>
+          <PublicationsPreviewHome
+            publicationPrincipal={publicationPrincipal}
+            secondaryPublications={secondaryPublications}
+          />
         </Col>
 
-        <Col className="row__col-right" span={6}>
-          <Card className="row__col-right__mostviewed" title="Noticias recientes">
-            <ListMostViewed lastPublications={lastPublications}/>
+        <Col className="row-home__col-right" span={6}>
+          <Card
+            className="row-home__col-right__mostviewed"
+            title="Noticias recientes"
+          >
+            <ListMostViewed lastPublications={lastPublications} />
           </Card>
         </Col>
       </Row>

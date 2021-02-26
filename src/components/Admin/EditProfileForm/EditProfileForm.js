@@ -99,7 +99,6 @@ export default function EditProfileForm() {
   useEffect(() => {
     const token = getAccessTokenApi();
     let userUpdate = userData;
-    console.log(userUpdate.avatar);
     if (typeof userUpdate.avatar === "object") {
       uploadAvatarApi(token, userUpdate.avatar, user._id).then((response) => {
         userUpdate.avatar = response.avatarName;

@@ -4,6 +4,7 @@ import News from "../../../components/Visitor/News";
 import ListMostViewed from "../../../components/Visitor/MostViewed/ListMostViewed";
 import ListSections from "../../../components/Visitor/Sections/ListSections";
 import {getPublicationsSectionVisitorApi, getPublicationsMostviewedSectionVisitorApi} from "../../../api/publication";
+import { Helmet } from "react-helmet";
 
 import { Row, Col, Card } from "antd";
 
@@ -22,15 +23,16 @@ export default function Sports() {
 
   return (
     <>
-      <Row className="row">
-        <Col className="row__left-news" flex={4}>
+      <Helmet><title>Radio F5 | Deportes</title></Helmet>
+      <Row className="row-sports">
+        <Col className="row-sports__left-news" span={18}>
           <ListSections publications={publications}/>
         </Col>
-        <Col className="row__right-news" flex={1}>
-          <Card className="row__right-news__ads">
+        <Col className="row-sports__right-news" span={6}>
+          <Card className="row-sports__right-news__ads">
             <h1>Anuncios</h1>
           </Card>
-          <Card className="row__right-news__related" title="Noticias más vistas">
+          <Card className="row-sports__right-news__related" title="Noticias más vistas">
             <ListMostViewed publicationsMostviewed={publicationsMostviewed}/>
           </Card>
           </Col>

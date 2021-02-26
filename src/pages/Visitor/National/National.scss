@@ -1,13 +1,15 @@
 @import "../../../scss/index.scss";
 
-/*.card-national {
-  margin-left: 40px;*/
-  .row {
+.row-national{
     &__left-news {
         text-align: left;
+        max-width: 100%;
+    }
+
     &__right-news {
       max-width: 300px;
-      margin: 10px 0 0 0;
+      margin: auto;
+      margin-top: 10px;
       &__ads {
       }
       &__related {
@@ -18,7 +20,6 @@
         margin-top: 10px;
       }
     }
-  }
 }
 
 .sponsors {

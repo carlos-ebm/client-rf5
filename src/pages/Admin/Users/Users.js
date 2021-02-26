@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet"
 import { Route, Redirect } from "react-router-dom";
 import { Button} from "antd";
 import { getAccessTokenApi } from "../../../api/auth";
@@ -33,6 +34,7 @@ export default function Users() {
   
   return (
     <>
+      <Helmet><title>Radio F5 | Usuarios</title></Helmet>
       {user.privilege=="1" ? <ListUsers users={users} setReloadUsers={setReloadUsers} /> : <></>}
     </>
   );

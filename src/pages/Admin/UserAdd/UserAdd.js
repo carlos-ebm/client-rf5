@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Card } from "antd";
 import RegisterForm from "../../../components/Admin/RegisterForm";
 import { getAccessTokenApi } from "../../../api/auth";
@@ -21,9 +22,12 @@ export default function UserAdd() {
   });
 
   return (
+    <>
+    <Helmet><title>Radio F5 | Agregar usuario</title></Helmet>
     <Card className="user-add__card">
       {user.privilege==1?<RegisterForm/>:<></>}
     </Card>
+    </>
   );
 }
 

@@ -49,13 +49,11 @@ export default function PublicationPreview(props) {
             />
           }
         >
-          <Meta
-            title={publication.title}
-            description={
-              publication.subtitle,
+          <div>
+            <h1 className="card-secondary__title">{publication.title}</h1>
+              <p className="card-secondary__subtitle">{publication.subtitle}</p>
               <h5>por <i>{publication.author}</i></h5>
-            }
-          />
+          </div>
         </Card>
  
     </>

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { Helmet } from "react-helmet";
 import { Menu, Button, Table } from "antd";
 import ListPublications from "../../../components/Admin/Publications/ListPublications";
 import { getPublicationsApi } from "../../../api/publication";
@@ -21,6 +22,7 @@ export default function Publications() {
   
   return (
     <>
+    <Helmet><title>Radio F5 | Publicaciones</title></Helmet>
       <ListPublications publications={publications} setReloadPublications={setReloadPublications} />
     </>
   );

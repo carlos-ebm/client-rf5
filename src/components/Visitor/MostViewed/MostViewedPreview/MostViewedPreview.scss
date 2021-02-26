@@ -4,4 +4,10 @@
 	margin-bottom: 10px;
 	width: 100%;
 	text-align: justify;
+	.ant-card-body{
+		padding: 0;
+		.ant-list-item-meta-title{
+			font-size: 16px;
+		}
+	}
 }

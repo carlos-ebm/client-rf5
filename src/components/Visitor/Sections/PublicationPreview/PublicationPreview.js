@@ -36,7 +36,7 @@ const addView = ()=> {
     <>
     <Card 
     hoverable
-    className="card-publication"
+    className="card-publication-section"
     onClick={()=> {
       localStorage.setItem(PUBLICATION_ID, publication._id);
       addView();
@@ -60,13 +60,8 @@ const addView = ()=> {
         />
       }
       >
-      <List.Item.Meta
-        //image={<Avatar src={image ? image : NoImage} />}
-        //image={publication.image}//avatar={<Avatar src={publication.avatar} />}
-        title={<h3><b>{publication.title}</b></h3>}//title={<a href={publication.href}>{publication.title}</a>}
-        //description={publication.description}
-      />
-      {publication.subtitle}
+        <h2 className="card-publication-section__title">{publication.title}</h2>
+        <p className="card-publication-section__subtitle">{publication.subtitle}</p>
       </List.Item>
       </Card>
     </>
