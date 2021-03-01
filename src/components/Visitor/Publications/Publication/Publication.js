@@ -48,7 +48,7 @@ export default function Publications(props) {
       <Row className="row-publication" >
       <Col className="row-publication__col-news" span={18} >
         <Card className="row-publication__col-news__card">
-          <h1>
+          <h1 className="row-publication__col-news__card__title">
             <b>{publication.title}</b>
           </h1>
           <h4>
@@ -58,12 +58,12 @@ export default function Publications(props) {
                 publication.author}
             </i>
           </h4>
-          <h1>{publication.subtitle}</h1>
           <img
             className="row-publication__col-news__card__image"
             alt="example"
             src={image ? image : NoImage}
           />
+          <h1><b>{publication.subtitle}</b></h1>
           <div dangerouslySetInnerHTML={{ __html: publication.content }} />
         </Card>
       </Col>

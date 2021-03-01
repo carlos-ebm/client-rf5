@@ -54,6 +54,7 @@ const addView = ()=> {
       extra=
       {
         <img
+        className="card-publication-section__image"
           width={272}
           alt="logo"
           src={image ? image : NoImage}

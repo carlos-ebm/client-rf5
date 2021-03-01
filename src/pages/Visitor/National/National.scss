@@ -25,3 +25,15 @@
 .sponsors {
   margin-top: 40px;
 }
+
+@media(max-width: $media-breackpoint-down-sm){
+  .ant-col-18{
+    flex: 0 0 100%;
+    margin-left: 0;
+  }
+
+   .ant-col-6{
+     flex: 0 0 130%;
+     max-width: 100%;
+   }
+}

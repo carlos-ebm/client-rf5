@@ -10,5 +10,32 @@
         -webkit-line-clamp: 5;
         line-clamp: 5;
         overflow: hidden;
-       }
+    }
+    .ant-card-body{
+        padding: 0;
+    }
+    &__image{
+        max-height: 300px;
+    }
+}
+
+@media(max-width: $media-breackpoint-down-sm){
+    .card-publication-section{
+        margin: 10px 0 0 0;
+        min-height: 250px;
+        max-width: 100%;
+        &__subtitle{
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+            line-clamp: 5;
+            overflow: hidden;
+        }
+        .ant-card-body{
+            padding: 0;
+        }
+        &__image{
+           width: 100%;
+        }
+    }
 }
